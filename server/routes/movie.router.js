@@ -27,6 +27,7 @@ router.get('/:id', (req, res) => {
     FROM movies
     JOIN movies_genres ON movies.id = movies_genres.movie_id
     JOIN genres ON movies_genres.genre_id = genres.id
+    where movies.id = $1
     GROUP BY movies.id, movies.title, movies.poster, movies.description;
     `;
   pool.query(query, [movieId])
@@ -34,7 +35,7 @@ router.get('/:id', (req, res) => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('ERROR: Get movie details', err);
+      console.log('ERROR: Get movie router details', err);
       res.sendStatus(500)
     })
 

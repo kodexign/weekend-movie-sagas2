@@ -12,7 +12,7 @@ function Details() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_DETAILS', payload: id });
-  }, []);
+  }, [id, dispatch]);
 // button return to home page
   const handleClick = () => {
     history.push('/');
@@ -23,11 +23,15 @@ function Details() {
       <h1>Details Page</h1>
       <button data-testid="toList" onClick={handleClick}> Return to Home</button>
       <section className="movies">
-        {movie.map(movie => {
+        {movieDetail.map(movie => {
           return (
             <div data-testid="movieDetails" key={movie.id}>
               <h3>{movie.title}</h3>
               <img src={movie.poster} alt={movie.title}/>
+              <h4>Genre</h4>
+              <p>{movie.genres}</p>
+              <h4>Description</h4>
+                <p>{movie.description}</p>
             </div>
           );
         })}

@@ -28,15 +28,15 @@ function* fetchAllMovies() {
 //KX added- fetch movie details
 function* fetchDetails(action) {
   try {
-    const detailsResponse = yield axios.get (`api/movies/${action.payload}`);
+    const detailsResponse = yield axios.get (`/api/movies/${action.payload}`);
     console.log('details:' , detailsResponse)
 
     yield put({
-      tyoe: 'SET_DETAILS',
+      type: 'SET_DETAILS',
       payload: detailsResponse.data
     });
   } catch (error) {
-    console.log('fetch details error:', error);
+    console.log('fetch details error in store:', error);
   }
 }
 
