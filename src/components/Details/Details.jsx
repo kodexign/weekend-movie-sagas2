@@ -11,7 +11,7 @@ function Details() {
   useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
   }, []);
-
+// button return to home page
   const handleClick = () => {
     history.push('/');
   }
