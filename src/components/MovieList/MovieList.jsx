@@ -11,6 +11,10 @@ function MovieList() {
     dispatch({ type: 'FETCH_MOVIES' });
   }, []);
 
+  // kx added- onclick on image to navigate to details page
+  const handleClick = (id) => {
+    history.push(`/details/${id}`);
+  }; 
   return (
     <main>
       <h1>MovieList</h1>
@@ -19,7 +23,7 @@ function MovieList() {
           return (
             <div data-testid='movieItem' key={movie.id}>
               <h3>{movie.title}</h3>
-              <img src={movie.poster} alt={movie.title}/>
+              <img data-testid="toDetails" src={movie.poster} alt={movie.title}/>
             </div>
           );
         })}
