@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 function Details() {
 
   const dispatch = useDispatch();
-  const movies = useSelector(store => store.movies);
+  const {id} = useParams();
+  const movie = useSelector(store => store.movies);
+  const movieDetail = useSelector (store => store.details);
   const history = useHistory();
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_MOVIES' });
+    dispatch({ type: 'FETCH_DETAILS', payload: id });
   }, []);
 // button return to home page
   const handleClick = () => {
@@ -21,7 +23,7 @@ function Details() {
       <h1>Details Page</h1>
       <button data-testid="toList" onClick={handleClick}> Return to Home</button>
       <section className="movies">
-        {movies.map(movie => {
+        {movie.map(movie => {
           return (
             <div data-testid="movieDetails" key={movie.id}>
               <h3>{movie.title}</h3>
