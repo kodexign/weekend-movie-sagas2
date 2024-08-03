@@ -64,7 +64,7 @@ const genres = (state = [], action) => {
 }
 
 //KX ADDED- used to store details
-const details = (state = {}, action) => {
+const details = (state = [], action) => {
   switch (action.type) {
     case 'SET_DETAILS':
       return action.payload;

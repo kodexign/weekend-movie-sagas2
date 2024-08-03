@@ -7,7 +7,7 @@ function Details() {
   const dispatch = useDispatch();
   const {id} = useParams();
   const movie = useSelector(store => store.movies);
-  const movieDetail = useSelector (store => store.details);
+  const details = useSelector (store => store.details);
   const history = useHistory();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function Details() {
       <h1>Details Page</h1>
       <button data-testid="toList" onClick={handleClick}> Return to Home</button>
       <section className="movies">
-        {movieDetail.map(movie => {
+        {details.map(movie=> {
           return (
             <div data-testid="movieDetails" key={movie.id}>
               <h3>{movie.title}</h3>
