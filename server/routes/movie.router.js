@@ -17,6 +17,28 @@ router.get('/', (req, res) => {
     })
 
 });
+// KX router to get movie details
+router.get('/:id', (req, res) => {
+  const movieId = req.params.id;
+  const query = `
+    SELECT 
+      movies.id, movies.title, movies.poster, movies.description,
+      Array_AGG(genres.name) AS genres
+    FROM movies
+    JOIN movies_genres ON movies.id = movies_genres.movie_id
+    JOIN genres ON movies_genres.genre_id = genres.id
+    GROUP BY movies.id, movies.title, movies.poster, movies.description;
+    `;
+  pool.query(query, [movieId])
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: Get movie details', err);
+      res.sendStatus(500)
+    })
+
+});
 
 router.post('/', (req, res) => {
   console.log(req.body);
@@ -60,7 +82,7 @@ router.post('/', (req, res) => {
           // catch for second query
           console.log(err);
           res.sendStatus(500)
-      })
+        })
     }).catch(err => { // 👈 Catch for first query
       console.log(err);
       res.sendStatus(500)
