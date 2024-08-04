@@ -17,16 +17,21 @@ function MovieList() {
   // kx added- onclick on image to navigate to details page
   const handleClick = (id) => {
     history.push(`/details/${id}`);
-  }; 
+  };
   return (
     <main>
       <h1>MovieList</h1>
       <section className="movies">
         {movies.map(movie => {
           return (
-            <div className= "movielist" data-testid='movieItem' key={movie.id}>
+            <div className="movielist" data-testid='movieItem' key={movie.id}>
               <h3>{movie.title}</h3>
-              <img data-testid="toDetails" src={movie.poster} alt={movie.title} onClick={() => handleClick(movie.id)}/>
+              <div className="container">
+                <img className='image' data-testid="toDetails" src={movie.poster} alt={movie.title} onClick={() => handleClick(movie.id)} />
+              </div>
+              <div className='middle'>
+                <div className='text'>go to movie details </div>
+              </div>
             </div>
           );
         })}

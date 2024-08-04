@@ -22,7 +22,7 @@ function Details() {
   return (
     <main>
       <h1>Details Page</h1>
-      <button data-testid="toList" onClick={handleClick}> Return to Home</button>
+      
       <section className="movies">
         {details.map(movie=> {
           return (
@@ -44,7 +44,7 @@ function Details() {
           );
         })}
       </section>
-      
+      <button data-testid="toList" onClick={handleClick}> Return to Movie List</button>
     </main>
   );
 }
