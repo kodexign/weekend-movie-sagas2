@@ -1,3 +1,21 @@
 .App {
   text-align: center;
+  background-color: rgb(254, 254, 148);
+  padding: 10px;
+  margin: 10px;
+}
+h3 {
+  border-style: outset;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  width: 225px;
+  text-align: center;
+}
+.movielist {
+  background-color: rgb(55, 77, 127);
+  margin: 10px;
+  padding: 10px;
+  border-style: dotted;
+
 }
