@@ -27,16 +27,16 @@ h3 {
 }
 
 .mdetails{
-  float: right;
   text-align: left;
   padding: 5px;
   margin: 5px;
-  border-style: solid;
+  
   
 }
 h1 {
   color:rgb(55, 77, 127) ;
-  background-color: rgb(183, 170, 153);
+  text-decoration: underline;
+ 
 }
 h4{
   color: white;
