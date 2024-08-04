@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import './Details.css';
 
 function Details() {
 
@@ -25,13 +26,20 @@ function Details() {
       <section className="movies">
         {details.map(movie=> {
           return (
-            <div data-testid="movieDetails" key={movie.id}>
-              <h3>{movie.title}</h3>
+            <div className="detailspage" data-testid="movieDetails" key={movie.id}>
+              
+              <h3 className='dHeader'>{movie.title}</h3>
+              
+              <div className='dImage'>
               <img src={movie.poster} alt={movie.title}/>
+              </div>
+
+              <div className='mdetails'>
               <h4>Genre</h4>
               <p>{movie.genres}</p>
               <h4>Description</h4>
                 <p>{movie.description}</p>
+            </div>
             </div>
           );
         })}
